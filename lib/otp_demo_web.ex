@@ -97,6 +97,7 @@ defmodule OtpDemoWeb do
 
       import OtpDemoWeb.ErrorHelpers
       import OtpDemoWeb.Gettext
+      import OtpDemoWeb.FormHelpers
       alias OtpDemoWeb.Router.Helpers, as: Routes
     end
   end
