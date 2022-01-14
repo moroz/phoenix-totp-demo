@@ -23,7 +23,12 @@ config :otp_demo, OtpDemoWeb.Endpoint,
   code_reloader: true,
   debug_errors: true,
   secret_key_base: "OiROT3xFyxSRBGKTQY6+Ap/7nf0rcFz1v5Db2wiMyG2kXWe3Qjf44unhgRB15KVu",
-  watchers: []
+  watchers: [
+    node: [
+      "node_modules/vite/bin/vite.js",
+      cd: Path.expand("../assets", __DIR__)
+    ]
+  ]
 
 # ## SSL Support
 #
