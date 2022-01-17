@@ -32,7 +32,7 @@ defmodule OtpDemo.Accounts.User do
   """
   def registration_changeset(user, attrs, opts \\ []) do
     user
-    |> cast(attrs, [:email, :password, :display_name])
+    |> cast(attrs, [:email, :password])
     |> validate_email()
     |> validate_password(opts)
   end

@@ -5,7 +5,7 @@ defmodule OtpDemo.AccountsFixtures do
   """
 
   def unique_user_email, do: "user#{System.unique_integer()}@example.com"
-  def valid_user_password, do: "hello world!"
+  def valid_user_password, do: "jP3#903rtb3^AJ1uXs1S"
 
   def valid_user_attributes(attrs \\ %{}) do
     Enum.into(attrs, %{

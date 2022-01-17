@@ -4,6 +4,8 @@ defmodule OtpDemoWeb.UserSessionController do
   alias OtpDemo.Accounts
   alias OtpDemoWeb.UserAuth
 
+  plug :put_layout, {OtpDemoWeb.LayoutView, :plain}
+
   def new(conn, _params) do
     render(conn, "new.html", error_message: nil)
   end

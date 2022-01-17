@@ -1,5 +1,9 @@
-<main class="container">
-  <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-  <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-  <%= @inner_content %>
-</main>
+<div class="layout">
+  <header>
+    <h1 class="title">OTP demo</h1>
+    <%= render "_user_menu.html", assigns %>
+  </header>
+  <main>
+    <%= @inner_content %>
+  </main>
+</div>

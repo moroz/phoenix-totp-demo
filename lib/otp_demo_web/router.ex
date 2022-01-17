@@ -17,17 +17,6 @@ defmodule OtpDemoWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", OtpDemoWeb do
-    pipe_through :browser
-
-    get "/", PageController, :index
-  end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", OtpDemoWeb do
-  #   pipe_through :api
-  # end
-
   # Enables the Swoosh mailbox preview in development.
   #
   # Note that preview only shows emails that were sent by the same
@@ -58,6 +47,7 @@ defmodule OtpDemoWeb.Router do
   scope "/", OtpDemoWeb do
     pipe_through [:browser, :require_authenticated_user]
 
+    get "/", PageController, :index
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
@@ -67,7 +57,7 @@ defmodule OtpDemoWeb.Router do
   scope "/", OtpDemoWeb do
     pipe_through [:browser]
 
-    get "/users/log_out", UserSessionController, :delete
+    delete "/users/log_out", UserSessionController, :delete
     get "/users/confirm", UserConfirmationController, :new
     post "/users/confirm", UserConfirmationController, :create
     get "/users/confirm/:token", UserConfirmationController, :edit
