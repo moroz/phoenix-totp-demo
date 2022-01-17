@@ -7,9 +7,10 @@ defmodule OtpDemo.Accounts.User do
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
     field :confirmed_at, :naive_datetime
-    field :display_name, :string
+    field :totp_secret, :binary, redact: true
+    field :totp_last_used_at, :utc_datetime
 
-    timestamps()
+    timestamps(type: :utc_datetime)
   end
 
   @doc """

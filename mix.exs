@@ -49,7 +49,7 @@ defmodule OtpDemo.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:web_authn_lite, "~> 0.1.0"},
+      {:nimble_totp, "~> 0.1.3"},
       {:phoenix_slime, "~> 0.13.1"}
     ]
   end
