@@ -1,8 +1,9 @@
 <div class="layout">
-  <header>
+  <aside class="sidebar">
     <h1 class="title">OTP demo</h1>
+    <%= link "Dashboard", to: Routes.page_path(@conn, :index), class: "sidebar-link" %>
     <%= render "_user_menu.html", assigns %>
-  </header>
+  </aside>
   <main>
     <%= @inner_content %>
   </main>
