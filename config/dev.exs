@@ -61,7 +61,7 @@ config :otp_demo, OtpDemoWeb.Endpoint,
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/otp_demo_web/(live|views)/.*(ex)$",
-      ~r"lib/otp_demo_web/templates/.*(eex)$"
+      ~r"lib/otp_demo_web/templates/.*(eex|slim|slime)$"
     ]
   ]
 
