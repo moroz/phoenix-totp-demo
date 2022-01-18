@@ -1,5 +1,7 @@
 <nav class="user_menu">
-  <%= @current_user.email %>
+  <p>
+    Current user:<br/><strong><%= @current_user.email %></strong>
+  </p>
   <%= link "Account Settings", to: Routes.user_settings_path(@conn, :edit), class: "sidebar-link" %>
   <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "button is-info is-fullwidth logout-link" %>
 </nav>

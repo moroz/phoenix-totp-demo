@@ -17,6 +17,12 @@ defmodule OtpDemoWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :browser_restricted do
+    plug :browser
+    plug :require_authenticated_user
+    plug :ensure_otp_set
+  end
+
   # Enables the Swoosh mailbox preview in development.
   #
   # Note that preview only shows emails that were sent by the same
@@ -45,13 +51,20 @@ defmodule OtpDemoWeb.Router do
   end
 
   scope "/", OtpDemoWeb do
-    pipe_through [:browser, :require_authenticated_user]
+    pipe_through :browser_restricted
 
     get "/", PageController, :index
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
-    get "/users/settings/mfa", UserMfaController, :new
+  end
+
+  scope "/", OtpDemoWeb do
+    pipe_through [:browser, :require_authenticated_user]
+
+    get "/mfa/register", UserMfaController, :new
+    post "/mfa/register", UserMfaController, :create
+    get "/mfa/challenge", UserMfaController, :challenge
   end
 
   scope "/", OtpDemoWeb do

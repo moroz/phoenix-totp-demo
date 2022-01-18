@@ -350,4 +350,17 @@ defmodule OtpDemo.Accounts do
       {:error, :user, changeset, _} -> {:error, changeset}
     end
   end
+
+  @doc """
+  Update any information related to an User's OTP settings, including
+  the TOTP secret (`:totp_secret`) and the timestamp indicating the last
+  time the OTP secret has been used (`:totp_last_used_at`).
+
+  Resets `:totp_last_used_at` if the secret has been modified.
+  """
+  def update_user_otp(user, attrs) do
+    user
+    |> User.otp_changeset(attrs)
+    |> Repo.update()
+  end
 end

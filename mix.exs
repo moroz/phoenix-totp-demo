@@ -50,7 +50,8 @@ defmodule OtpDemo.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:nimble_totp, "~> 0.1.3"},
-      {:phoenix_slime, "~> 0.13.1"}
+      {:phoenix_slime, "~> 0.13.1"},
+      {:eqrcode, "~> 0.1.10"}
     ]
   end
 

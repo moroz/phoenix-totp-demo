@@ -116,6 +116,25 @@ defmodule OtpDemo.Accounts.User do
   end
 
   @doc """
+  A user changeset for modifying any information related to TOTP.
+  """
+  def otp_changeset(user, attrs) do
+    user
+    |> cast(attrs, [:totp_secret, :totp_last_used_at])
+    |> reset_totp_last_used_at_if_secret_changed()
+  end
+
+  defp reset_totp_last_used_at_if_secret_changed(changeset) do
+    case get_change(changeset, :totp_secret, :unchanged) do
+      :unchanged ->
+        changeset
+
+      _ ->
+        put_change(changeset, :totp_last_used_at, nil)
+    end
+  end
+
+  @doc """
   Verifies the password.
 
   If there is no user or the user doesn't have a password, we call

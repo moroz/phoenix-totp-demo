@@ -146,4 +146,20 @@ defmodule OtpDemoWeb.UserAuth do
   defp maybe_store_return_to(conn), do: conn
 
   defp signed_in_path(_conn), do: "/"
+
+  @doc """
+  Make sure that every signed in user has a TOTP secret set.
+  If not, redirect them to the page where they can set it up.
+  """
+  def ensure_otp_set(conn, _opts) do
+    user = conn.assigns[:current_user]
+
+    if is_nil(user) || user.totp_secret do
+      conn
+    else
+      conn
+      |> redirect(to: Routes.user_mfa_path(conn, :register))
+      |> halt()
+    end
+  end
 end
